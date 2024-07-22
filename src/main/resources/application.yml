@@ -1,0 +1,342 @@
+mybatis.configLocation: classpath:mybatis-config.xml
+spring:
+  profiles.active: test
+  jmx.enabled: false
+  datasource:
+    qixiao:
+      type: com.zaxxer.hikari.HikariDataSource
+      hikari:
+        poolName: HikariCP[qixiao]
+        connectionTimeout: 500000
+  userAgent: qixiao-script-hyl
+ribbon:
+  eureka.enabled: false
+  eager-load:
+    enabled: true
+    clients: qixiao-api
+feign:
+  httpclient.enabled: false
+  okhttp.enabled: true
+  hystrix.enabled: false
+  client.config.default.loggerLevel: BASIC
+---
+spring:
+  profiles: dev
+  userAgent: qixiao-script-hyl
+  creative:
+    refreshjson:
+      url: http://10.10.13asdf1.164/api2?key=
+  datasource:
+    audit:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bd.qixiaocontentaudit.r.qiyi.db:2861/qixiao_content_audit?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qx_content_audit
+      password: 8o9x#(nP
+      hikari:
+        maximumPoolSize: 50
+        minimunIdle: 3
+    accountAudit:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_account_audit_dev?useUnicode=true&characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 50
+        minimunIdle: 3
+    qixiao:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_dev?useUnicode=true&characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    qixiaobackup:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiao.r.qiyi.db:8781/qixiao?useUnicode=true&characterEncoding=UTF-8
+      username: qx
+      password: UywM75Dr
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    mysql8:
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/testdb?useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: 45ityvlLtj###123
+        hikari:
+          maximumPoolSize: 8
+          minimunIdle: 3
+    finance:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_finance_test?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    oldfinance:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_recharge_test?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    crm:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_crm_test
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    produceproxy:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.aduploaddev.w.qiyi.db:2791/ad_upload_dev
+      username: ad_upload_dev
+      password: Tom@to1122
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+  data:
+    mongodb:
+      uri: mongodb://qixiao-biz-config:QXbiz123@qixiao-biz-config-1.qiyi.mongo:27024,qixiao-biz-config-2.qiyi.mongo:27024/admin
+      database: qixiao-config-test
+skyeye-api:
+  token: 0e559538-8d14-4731-b256-b0539b075dcf
+  ribbon:
+    listOfServers: http://open.api.tianyancha.com
+    ConnectTimeout: 5000
+    ReadTimeout: 15000
+rocketmq:
+  name-server: service-cloud-dc-research-rocketmq-dev001-whdx.qiyi.virtual:9876;service-cloud-dc-research-rocketmq-dev003-whdx.qiyi.virtual:9876
+  producers[0]:
+    topic: material_content_id_test
+    group: PG-material_content_id_test_qilin
+    token: PT-92a17bfc-578f-41cd-8675-8878c0134908
+  producers[1]:
+    topic: common_smart_resize_test
+    group: PG-common_smart_resize_test
+    token: PT-822fe7de-de77-4db3-8de1-2830536c3f9d
+backendData:
+  server: bj.oss.qiyi.storage
+  accessKey: biztppcn0vk8p6mjia1157x6gy5y4yhn
+  secretAccessKey: mdkn1t5ixn23vlq9wwsyb2pjccsrphxa
+  bucket: qixiao-exporter-test
+---
+spring:
+  profiles: test
+  userAgent: qixiao-script-hyl
+  creative:
+    refreshjson:
+      url: http://10.10.13asdf1.164/api2?key=
+  datasource:
+    audit:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bd.qixiaocontentaudit.r.qiyi.db:2861/qixiao_content_audit?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qx_content_audit
+      password: 8o9x#(nP
+      hikari:
+        maximumPoolSize: 50
+        minimunIdle: 3
+    accountAudit:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_account_audit_test?useUnicode=true&characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 50
+        minimunIdle: 3
+    qixiao:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_test?useUnicode=true&characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    qixiaobackup:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_dev?useUnicode=true&characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    finance:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_finance_test?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    oldfinance:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_recharge_test?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    crm:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaodev.w.qiyi.db:1544/qixiao_crm_test
+      username: qixiao_dev
+      password: qixiaoCESHI123
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle:
+    produceproxy:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.aduploaddev.w.qiyi.db:2791/ad_upload_dev
+      username: ad_upload_dev
+      password: Tom@to1122
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+  data:
+    mongodb:
+      uri: mongodb://qixiao-biz-config:QXbiz123@qixiao-biz-config-1.qiyi.mongo:27024,qixiao-biz-config-2.qiyi.mongo:27024/admin
+      database: qixiao-config-test
+skyeye-api:
+  token: 0e559538-8d14-4731-b256-b0539b075dcf
+  ribbon:
+    listOfServers: http://open.api.tianyancha.com
+    ConnectTimeout: 5000
+    ReadTimeout: 15000
+rocketmq:
+  name-server: service-cloud-dc-research-rocketmq-dev001-whdx.qiyi.virtual:9876;service-cloud-dc-research-rocketmq-dev003-whdx.qiyi.virtual:9876
+  producers[0]:
+    topic: material_content_id_test
+    group: PG-material_content_id_test_qilin
+    token: PT-92a17bfc-578f-41cd-8675-8878c0134908
+  producers[1]:
+    topic: common_smart_resize_test
+    group: PG-common_smart_resize_test
+    token: PT-822fe7de-de77-4db3-8de1-2830536c3f9d
+file:
+  baseDir: /tmp
+  aiDir: /tmp
+qoss:
+  endpoint: http://bj.oss.qiyi.storage
+  ak: 31svvlc0opd3cptl72qal7rwte1qj5w4
+  sk: hxcqmiqf5wlpdmdmy6tc9cxk8r4lhz82
+  bucket: qilin-biz-online
+  cdnEndpoint: http://static-s.iqiyi.com
+  cdnEndpointHttps: https://static-s.iqiyi.com
+  cdnBucket: resource2cdn
+backendData:
+  server: bj.oss.qiyi.storage
+  accessKey: biztppcn0vk8p6mjia1157x6gy5y4yhn
+  secretAccessKey: mdkn1t5ixn23vlq9wwsyb2pjccsrphxa
+  bucket: qixiao-exporter-test
+---
+spring:
+  userAgent: qixiao-script-hyl
+  profiles: prod
+  creative:
+      refreshjson:
+        url: http://10.10.132.2asf18/api2?key=
+  datasource:
+    audit:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bd.qixiaocontentaudit.r.qiyi.db:2861/qixiao_content_audit?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qx_content_audit
+      password: 8o9x#(nP
+      hikari:
+        maximumPoolSize: 50
+        minimunIdle: 3
+    accountAudit:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaoaccountaudit.r.qiyi.db:3227/qixiao_account_audit?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qx_account_audit
+      password: qx!@aWQE$1
+      hikari:
+        maximumPoolSize: 50
+        minimunIdle: 3
+    qixiao:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiao.w.qiyi.db:8781/qixiao?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qx
+      password: UywM75Dr
+      hikari:
+        maximumPoolSize: 50
+        minimunIdle: 3
+    qixiaobackup:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiao.r.qiyi.db:8781/qixiao?useUnicode=true&characterEncoding=UTF-8
+      username: qx
+      password: UywM75Dr
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    finance:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bd.qixiaofinance.r.qiyi.db:3028/qixiao_finance?useUnicode=true&amp;characterEncoding=UTF-8
+      username: qx_finance
+      password: Wx8@fv21
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    oldfinance:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaorecharge.r.qiyi.db:8783/qixiao_recharge
+      username: qixiao_recharge
+      password: yQMzU@pG
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    crm:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.qixiaocrm.r.qiyi.db:8779/qixiao_crm
+      username: qixiao_crm
+      password: +FwfkshI
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+    produceproxy:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://bj.adupload.w.qiyi.db:8487/ad_upload
+      username: ad_upload
+      password: S2YcnO@v
+      hikari:
+        maximumPoolSize: 8
+        minimunIdle: 3
+  data:
+    mongodb:
+      uri: mongodb://qixiao-biz-config:QXbiz123@qixiao-biz-config-1.qiyi.mongo:27024,qixiao-biz-config-2.qiyi.mongo:27024/admin
+      database: qixiao-config-test
+skyeye-api:
+  token: 0e559538-8d14-4731-b256-b0539b075dcf
+  ribbon:
+    listOfServers: http://open.api.tianyancha.com
+    ConnectTimeout: 5000
+    ReadTimeout: 15000
+rocketmq:
+  nameServer: hb-az-2.ads-biz-online.online001.rocketmq.qiyi.middle:9876;hb-az-2.ads-biz-online.online002.rocketmq.qiyi.middle:9876
+  producers[0]:
+    topic: material_content_id
+    group: PG-material_content_id_qilin
+    token: PT-4dc661b7-15b5-4bd7-b0d9-4455c48fbb5d
+  producers[1]:
+    topic: common_smart_resize
+    group: PG-common_smart_resize
+    token: PT-df53e61d-8246-4909-b96c-c3c07a7a2891
+file:
+  baseDir: /tmp
+  aiDir: /tmp
+qoss:
+  endpoint: http://bj.oss.qiyi.storage
+  ak: 31svvlc0opd3cptl72qal7rwte1qj5w4
+  sk: hxcqmiqf5wlpdmdmy6tc9cxk8r4lhz82
+  bucket: qilin-biz-online
+  cdnEndpoint: http://static-s.iqiyi.com
+  cdnEndpointHttps: https://static-s.iqiyi.com
+  cdnBucket: resource2cdn
+backendData:
+  server: bj.oss.qiyi.storage
+  accessKey: biztppcn0vk8p6mjia1157x6gy5y4yhn
+  secretAccessKey: mdkn1t5ixn23vlq9wwsyb2pjccsrphxa
+  bucket: qixiao-exporter-prod

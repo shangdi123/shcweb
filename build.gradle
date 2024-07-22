@@ -1,0 +1,98 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.9.RELEASE'
+}
+
+group 'com.hyl.qixiao'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    maven {
+        credentials {
+            username 'iqiyi-maven-qixiao'
+            password 'kq8IHXihG8Lu'
+        }
+        url = 'http://jfrog.cloud.qiyi.domain/iqiyi-maven-qixiao/'
+    }
+    maven {
+        url 'http://jfrog.cloud.qiyi.domain/libs-release'
+    }
+    maven {
+        url 'http://maven.qiyi.virtual/a/repository'
+    }
+    maven {
+        url 'http://maven.qiyi.virtual/a/iqiyi-internal-repo'
+    }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+    maven {
+        url 'https://mvnrepository.com'
+    }
+    maven {
+        url 'http://jfrog.cloud.qiyi.domain/iqiyi-maven-cloudservice'
+    }
+}
+
+dependencies {
+    // for web
+    compile 'org.springframework.boot:spring-boot-starter'
+    // for aop
+    compile 'org.springframework.boot:spring-boot-starter-aop'
+
+    compile 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // for JSON
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+
+    // for http
+//    compile 'com.squareup.okhttp3:benchmarks:3.11.0'
+
+    compile ('com.iqiyi.oss:iqiyi-oss-java-sdk:0.1.7')
+    // for feign-okhttp
+    compile 'io.github.openfeign:feign-okhttp:9.5.0'
+
+    // for PostgreSQL
+    compile 'org.postgresql:postgresql:42.2.4'
+
+    // for MySQL
+    compile 'com.zaxxer:HikariCP'
+    compile 'mysql:mysql-connector-java'
+    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1'
+
+    compile 'org.springframework.data:spring-data-mongodb'
+
+    compile 'org.apache.tika:tika-core:1.4'
+//    compile 'com.iqiyi.cupid:lutai-file:1.0.27'
+//    compile 'com.iqiyi.cupid:upload-util:1.8.0'
+//    compile 'com.iqiyi.cupid:upload-util:2.0.0'
+
+    compile 'org.apache.commons:commons-csv:1.7'
+
+    // for MongoDB
+    compile 'org.springframework.data:spring-data-mongodb'
+
+    compile ('org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.0-iqiyi-1') {
+        exclude( group: 'io.netty')
+    }
+
+    // for feign
+    compile 'org.springframework.cloud:spring-cloud-starter-openfeign:1.4.4.RELEASE'
+    compile 'io.github.openfeign.form:feign-form:3.3.0'
+    compile 'io.github.openfeign.form:feign-form-spring:3.3.0'
+
+    compile 'com.alibaba:transmittable-thread-local:2.12.1'
+
+    compile ('cn.hutool:hutool-http:4.1.3')
+
+    compile('org.elasticsearch:elasticsearch:7.3.2')
+    compile('org.elasticsearch.client:elasticsearch-rest-client:7.3.2')
+    compile('org.elasticsearch.client:elasticsearch-rest-high-level-client:7.3.2')
+}
+
+
+
